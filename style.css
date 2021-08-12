@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Varela+Round&display=swap');
+
+:root {
+  --main-bg: #0e0f11;
+  --settings-bg: #08090a;
+  --text: #9da7ad;
+  --accent1: #50f0fc;
+  --accent2: #7af749;
+  --title-font: 'Varela Round', sans-serif;
+  --main-font: 'Roboto', sans-serif;
+}
+
+*, *::after, *::before {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  background: var(--main-bg);
+}
+
+h1 {
+  color: var(--text);
+  font-family: var(--title-font);
+  font-weight: bold;
+  letter-spacing: 5px;
+}
+
+h1 span { color: var(--settings-bg); }
+
+main {
+  width: 302px;
+  height: 302px;
+  background-color: var(--settings-bg);
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-template-rows: repeat(3, 100px);
+  column-gap: 4px;
+  row-gap: 4px;
+}
+
+.cell {
+  width: 97px;
+  height: 97px;
+  background: var(--main-bg);
+}
+
+.cell[data-value='x'], .cell[data-value='o'] {
+  position: relative;
+}
+
+.cell[data-value='x']:before, .cell[data-value='x']::after {
+  content: '';
+  position: absolute;
+  top: 20px;
+  left: 45px;
+  width: 10px;
+  height: 60px;
+  border-radius: 5px;
+  background-color: var(--accent1);
+}
+
+.cell[data-value='x']::before { transform: rotate(45deg); }
+
+.cell[data-value='x']::after { transform: rotate(-45deg); }
+
+.cell[data-value='o']::before {
+  content: '';
+  position: absolute;
+  top: 22px;
+  left: 20px;
+  width: 55px;
+  height: 55px;
+  border-radius: 100%;
+  border: 10px solid var(--accent2);
+  background-color: transparent;
+}
+
+.results {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0 0 0;
+  width: 300px;
+  height: 50px;
+  cursor: default;
+}
+
+.msg {
+  color: var(--text);
+  font-family: var(--title-font);
+  font-size: 20px;
+  letter-spacing: 1px;
+}
+
+.play-btn {
+  appearance: none;
+  margin: 5px;
+  padding: 5px 10px;
+  color: var(--settings-bg);
+  font-size: 10px;
+  border-radius: 2px;
+  border: 0;
+  outline: none;
+  background-color: var(--accent1);
+  transition: background-color 0.3s ease;
+}
+
+.play-btn:hover {
+  background-color: var(--text);
+}
